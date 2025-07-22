@@ -18,7 +18,7 @@ import * as z from "zod";
 export default function Index() {
   const [loading, setLoading] = useState(false);
   const schema = z.object({
-    email: z.email("Invalid email address"),
+    email: z.string().email("Invalid email address"),
     password: z
       .string()
       .min(1, "Password is required")
