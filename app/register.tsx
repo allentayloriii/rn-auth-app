@@ -41,6 +41,14 @@ const Register = () => {
   const onSubmit = (data: FormData) => {
     console.log("Form Data:", data);
     // Handle form submission logic here
+    setLoading(true);
+    // TODO: Replace setTimeout with actual API call and proper error handling
+    setTimeout(() => {
+      setLoading(false);
+      console.log("Form submitted successfully");
+      // You can navigate to another screen or show a success message here
+      router.navigate("/");
+    }, 2000);
   };
 
   return (
