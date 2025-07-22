@@ -39,6 +39,13 @@ export default function Index() {
   const onSubmit = (data: FormData) => {
     console.log("Form Data:", data);
     // Handle form submission logic here
+    setLoading(true);
+    // Simulate a network request
+    setTimeout(() => {
+      setLoading(false);
+      console.log("Form submitted successfully");
+      // You can navigate to another screen or show a success message here
+    }, 2000);
   };
 
   return (
@@ -107,6 +114,11 @@ export default function Index() {
         <Link href="/register" asChild>
           <TouchableOpacity style={styles.outlineButton}>
             <Text style={styles.outlineButtonText}>Register</Text>
+          </TouchableOpacity>
+        </Link>
+        <Link href="/privacy" asChild>
+          <TouchableOpacity style={{ alignItems: "center", marginTop: 10 }}>
+            <Text style={styles.outlineButtonText}>Privacy Policy</Text>
           </TouchableOpacity>
         </Link>
       </KeyboardAvoidingView>

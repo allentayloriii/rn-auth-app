@@ -15,6 +15,13 @@ export default function RootLayout() {
         name="register"
         options={{ title: "Create Account", headerBackTitle: "Login" }}
       />
+      <Stack.Screen
+        name="privacy"
+        options={{
+          title: "Privacy Policy",
+          headerBackTitle: "Back",
+        }}
+      />
     </Stack>
   );
 }
