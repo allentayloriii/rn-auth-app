@@ -22,7 +22,7 @@ export default function Index() {
     password: z
       .string()
       .min(1, "Password is required")
-      .max(6, "Password must be at least 6 characters long"),
+      .max(32, "Password can't be longer than 32 characters long"),
   });
 
   type FormData = z.infer<typeof schema>;
@@ -41,6 +41,7 @@ export default function Index() {
     // Handle form submission logic here
     setLoading(true);
     // Simulate a network request
+    // TODO: Replace setTimeout with actual API call and proper error handling
     setTimeout(() => {
       setLoading(false);
       console.log("Form submitted successfully");
@@ -117,7 +118,7 @@ export default function Index() {
           </TouchableOpacity>
         </Link>
         <Link href="/privacy" asChild>
-          <TouchableOpacity style={{ alignItems: "center", marginTop: 10 }}>
+          <TouchableOpacity style={styles.privacyButton}>
             <Text style={styles.outlineButtonText}>Privacy Policy</Text>
           </TouchableOpacity>
         </Link>
@@ -209,5 +210,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     zIndex: 1,
+  },
+  privacyButton: {
+    alignItems: "center",
+    marginTop: 10,
   },
 });

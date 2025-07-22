@@ -42,7 +42,7 @@ const Register = () => {
     console.log("Form Data:", data);
     // Handle form submission logic here
     setLoading(true);
-    // Simulate a network request
+    // TODO: Replace setTimeout with actual API call and proper error handling
     setTimeout(() => {
       setLoading(false);
       console.log("Form submitted successfully");
