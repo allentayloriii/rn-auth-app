@@ -1,13 +1,12 @@
 import axios from "axios";
-import * as FileSystem from "expo-file-system";
 import { Platform } from "react-native";
 
 let API_URL = `${process.env.EXPO_PUBLIC_API_URL}/api`;
 
 if (Platform.OS === "android") {
-  API_URL = "http://10.0.2.2:3000/api";
+if (Platform.OS === "android") {
+  API_URL = `${process.env.EXPO_PUBLIC_ANDROID_API_URL || "http://10.0.2.2:3000"}/api`;
 }
-
 export interface ApiResponse<T> {
   data?: T;
   error?: string;
@@ -109,7 +108,7 @@ export const updateMessage = async (
     const response = await axios.patch(`${API_URL}/messages/${id}`, payload);
     return { data: response.data };
   } catch (error) {
-    throw new Error("Failed to update message. Please try again.");
+    return { error: "Failed to update message. Please try again." };
   }
 };
 
@@ -129,6 +128,7 @@ export const uploadImage = async ({
   uri: string;
   token: string;
 }) => {
+  const FileSystem = await import("expo-file-system");
   return FileSystem.uploadAsync(`${API_URL}/users/me/avatar`, uri, {
     httpMethod: "POST",
     uploadType: FileSystem.FileSystemUploadType.MULTIPART,
