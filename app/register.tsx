@@ -27,11 +27,10 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const Register = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const {
     control,
     handleSubmit,
-    trigger,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -97,6 +96,7 @@ const Register = () => {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
+                placeholder="Password"
                 placeholderTextColor={COLORS.placeholder}
                 secureTextEntry
               />
