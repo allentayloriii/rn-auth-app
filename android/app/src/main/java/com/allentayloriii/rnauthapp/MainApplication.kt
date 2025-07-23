@@ -1,4 +1,4 @@
-package com.soundtrksamurai.rnauthapp
+package com.allentayloriii.rnauthapp
 
 import android.app.Application
 import android.content.res.Configuration
