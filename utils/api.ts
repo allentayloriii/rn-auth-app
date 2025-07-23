@@ -4,8 +4,9 @@ import { Platform } from "react-native";
 let API_URL = `${process.env.EXPO_PUBLIC_API_URL}/api`;
 
 if (Platform.OS === "android") {
-if (Platform.OS === "android") {
-  API_URL = `${process.env.EXPO_PUBLIC_ANDROID_API_URL || "http://10.0.2.2:3000"}/api`;
+  API_URL = `${
+    process.env.EXPO_PUBLIC_ANDROID_API_URL || "http://10.0.2.2:3000"
+  }/api`;
 }
 export interface ApiResponse<T> {
   data?: T;

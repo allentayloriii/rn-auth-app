@@ -1,3 +1,4 @@
+import { useAuth } from "@/context/AuthContext";
 import { COLORS } from "@/utils/colors";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
@@ -5,6 +6,7 @@ import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
   ActivityIndicator,
+  Alert,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
@@ -28,6 +30,8 @@ type FormData = z.infer<typeof schema>;
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
+  const { onRegister } = useAuth();
+
   const {
     control,
     handleSubmit,
@@ -38,17 +42,16 @@ const Register = () => {
   });
   const router = useRouter();
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form Data:", data);
-    // Handle form submission logic here
+  const onSubmit = async ({ email, password, name }: FormData) => {
+    console.log("Form Data:", { email, password, name });
     setLoading(true);
-    // TODO: Replace setTimeout with actual API call and proper error handling
-    setTimeout(() => {
-      setLoading(false);
-      console.log("Form submitted successfully");
-      // You can navigate to another screen or show a success message here
-      router.navigate("/");
-    }, 2000);
+    const result = await onRegister!(email, password, name!);
+    if (result?.error) {
+      Alert.alert("Registration Error", result.msg);
+    } else {
+      router.back();
+    }
+    setLoading(false);
   };
 
   return (

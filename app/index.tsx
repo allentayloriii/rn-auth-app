@@ -1,3 +1,4 @@
+import { useAuth } from "@/context/AuthContext";
 import { COLORS } from "@/utils/colors";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Image } from "expo-image";
@@ -6,6 +7,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
   ActivityIndicator,
+  Alert,
   KeyboardAvoidingView,
   StyleSheet,
   Text,
@@ -17,6 +19,8 @@ import * as z from "zod";
 
 export default function Index() {
   const [loading, setLoading] = useState(false);
+  const { onLogin } = useAuth();
+
   const schema = z.object({
     email: z.string().email("Invalid email address"),
     password: z
@@ -36,17 +40,13 @@ export default function Index() {
     mode: "onChange",
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form Data:", data);
-    // Handle form submission logic here
+  const onSubmit = async ({ email, password }: FormData) => {
     setLoading(true);
-    // Simulate a network request
-    // TODO: Replace setTimeout with actual API call and proper error handling
-    setTimeout(() => {
-      setLoading(false);
-      console.log("Form submitted successfully");
-      // You can navigate to another screen or show a success message here
-    }, 2000);
+    const result = await onLogin!(email, password);
+    if (result?.error) {
+      Alert.alert("Login Error", result.msg);
+    }
+    setLoading(false);
   };
 
   return (
@@ -58,6 +58,7 @@ export default function Index() {
         <Image
           source={require("../assets/images/logo.png")}
           style={styles.image}
+          contentFit="contain"
         />
         <Text style={styles.header}>Galaxies</Text>
         <Text style={styles.subHeader}>The app to be.</Text>
@@ -154,7 +155,6 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 150,
-    contentFit: "contain",
   },
   header: {
     fontSize: 40,
