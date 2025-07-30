@@ -17,8 +17,6 @@ export const auth = async (
 ) => {
   try {
     const token = req.header("Authorization")?.replace("Bearer ", "");
-    console.log(`Authenticating, token: ${token}`);
-
     if (!token) {
       console.log(`Token doesn't exist, throwing Error`);
       throw new Error(`Token doesn't exist, throwing Error`);
