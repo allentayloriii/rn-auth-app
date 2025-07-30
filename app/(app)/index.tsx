@@ -56,7 +56,7 @@ export default function Index() {
         style={{ flex: 1, justifyContent: "center" }}
       >
         <Image
-          source={require("../assets/images/logo.png")}
+          source={require("@/assets/images/logo.png")}
           style={styles.image}
           contentFit="contain"
         />

@@ -1,32 +1,18 @@
 import { AuthProvider } from "@/context/AuthContext";
-import { COLORS } from "@/utils/colors";
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
+import React from "react";
+import { StyleSheet } from "react-native";
 
-const Layout = () => {
+const RootLayout = () => {
   return (
     <AuthProvider>
-      <Stack
-        screenOptions={{
-          headerStyle: { backgroundColor: COLORS.background },
-          headerTintColor: "#fff",
-          contentStyle: { backgroundColor: COLORS.background },
-        }}
-      >
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="register"
-          options={{ title: "Create Account", headerBackTitle: "Login" }}
-        />
-        <Stack.Screen
-          name="privacy"
-          options={{
-            title: "Privacy Policy",
-            headerBackTitle: "Back",
-          }}
-        />
-      </Stack>
+      <Slot />
     </AuthProvider>
   );
 };
 
-export default Layout;
+export default RootLayout;
+
+const styles = StyleSheet.create({
+  container: {},
+});
