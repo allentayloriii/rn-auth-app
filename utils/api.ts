@@ -64,20 +64,11 @@ export const registerUser = async (
   name?: string
 ): Promise<ApiResponse<any>> => {
   try {
-    const response = await apiClient.post(
-      `${API_URL}/users/register`,
-      {
-        email,
-        password,
-        name,
-      },
-      {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiYUBiLmNvbSIsImlhdCI6MTc1MzI0NTE2N30.XWDBwN9DImnQvQPIw_cnOg0VPVv9bH2sqoOtGiq1sEQ`, // Include the JWT token here
-          "Content-Type": "application/json", // Optional: specify content type
-        },
-      }
-    );
+    const response = await apiClient.post(`${API_URL}/users/register`, {
+      email,
+      password,
+      name,
+    });
     return { data: response.data };
   } catch (error) {
     console.log("Registration error:", JSON.stringify(error));
