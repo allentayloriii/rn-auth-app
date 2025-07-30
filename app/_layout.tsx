@@ -1,7 +1,6 @@
 import { AuthProvider } from "@/context/AuthContext";
 import { Slot } from "expo-router";
 import React from "react";
-import { StyleSheet } from "react-native";
 
 const RootLayout = () => {
   return (
@@ -12,7 +11,3 @@ const RootLayout = () => {
 };
 
 export default RootLayout;
-
-const styles = StyleSheet.create({
-  container: {},
-});
