@@ -45,7 +45,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const decodedToken = jwtDecode<DecodedToken>(token);
       setToken(token);
-      console.log("Decoded Token:", decodedToken);
+      if (__DEV__) {
+        console.log("Decoded Token:", decodedToken);
+      }
       setUserId(decodedToken.id);
     } catch (error) {
       console.error("Failed to decode token:", error);
@@ -94,7 +96,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const loadToken = async () => {
       const storedToken = await SecureStore.getItemAsync(JWT_TOKEN);
-      console.log("Loaded token:", storedToken);
+      if (__DEV__) {
+        console.log("Loaded token:", storedToken);
+      }
       if (storedToken) {
         setAuthToken(storedToken);
         processToken(storedToken);
