@@ -45,7 +45,7 @@ const Register = () => {
   const onSubmit = async ({ email, password, name }: FormData) => {
     console.log("Form Data:", { email, password, name });
     setLoading(true);
-    const result = await onRegister!(email, password, name!);
+    const result = await onRegister!(email, password, name);
     if (result?.error) {
       Alert.alert("Registration Error", result.msg);
     } else {

@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const handleRegister = async (
     email: string,
     password: string,
-    name: string
+    name?: string
   ) => {
     const result = await registerUser(email, password, name);
     if (result.error) {
