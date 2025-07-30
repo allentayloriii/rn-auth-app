@@ -53,7 +53,8 @@ export const getUserInfo = async (): Promise<ApiResponse<any>> => {
   try {
     const response = await apiClient.get(`${API_URL}/users/me`);
     return { data: response.data };
-  } catch (_) {
+  } catch (error) {
+    console.error("Get user info error:", JSON.stringify(error));
     return { error: "Failed to get user info. Please try again." };
   }
 };
