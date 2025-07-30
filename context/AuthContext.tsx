@@ -1,4 +1,5 @@
 import { loginUser, registerUser } from "@/utils/api";
+import { setAuthToken } from "@/utils/axios";
 import * as SecureStore from "expo-secure-store";
 import { jwtDecode } from "jwt-decode";
 import {
@@ -53,7 +54,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const handleLogin = async (email: string, password: string) => {
-    // Simulate API call
     const result = await loginUser(email, password);
     if (result.error) {
       return { error: true, msg: result.error };
@@ -69,7 +69,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     password: string,
     name: string
   ) => {
-    // Simulate API call
     const result = await registerUser(email, password, name);
     if (result.error) {
       return { error: true, msg: result.error };
@@ -97,6 +96,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const storedToken = await SecureStore.getItemAsync(JWT_TOKEN);
       console.log("Loaded token:", storedToken);
       if (storedToken) {
+        setAuthToken(storedToken);
         processToken(storedToken);
       }
       setInitialized(true);
