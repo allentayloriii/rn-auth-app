@@ -1,4 +1,4 @@
-package com.soundtrksamurai.rnauthapp
+package com.allentayloriii.rnauthapp
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build
