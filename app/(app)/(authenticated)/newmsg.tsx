@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Toast from "react-native-toast-message";
 
 const NewMsg = () => {
   const [message, setMessage] = useState("");
@@ -24,9 +25,21 @@ const NewMsg = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["messages"] });
+      Toast.show({
+        type: "success",
+        text1: "Message sent successfully!",
+      });
       router.back();
     },
     onError: (error) => {
+      Toast.show({
+        type: "error",
+        text1: "Failed to send message",
+        text2:
+          error instanceof Error
+            ? error.message
+            : "An unexpected error occurred",
+      });
       console.error("Error creating message:", error);
     },
   });
