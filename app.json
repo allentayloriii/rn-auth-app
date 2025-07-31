@@ -1,45 +1,64 @@
 {
   "expo": {
-    "name": "rn-auth-app",
-    "slug": "rn-auth-app",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "rnauthapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.allentayloriii.rn-auth-app"
-    },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "foregroundImage": "./assets/images/adaptive-icon.png"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.allentayloriii.rnauthapp"
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+    "experiments": {
+      "typedRoutes": true
     },
+    "extra": {
+      "eas": {
+        "projectId": "211e102e-b75e-4bae-aec1-3a662d46acca"
+      },
+      "router": {}
+    },
+    "icon": "./assets/images/icon.png",
+    "ios": {
+      "bundleIdentifier": "com.allentayloriii.rn-auth-app",
+      "supportsTablet": true
+    },
+    "name": "rn-auth-app",
+    "newArchEnabled": true,
+    "orientation": "portrait",
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
+          "backgroundColor": "#ffffff",
           "contentFit": "contain",
-          "backgroundColor": "#ffffff"
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "minSdkVersion": 21,
+            "targetSdkVersion": 34
+          },
+          "ios": {
+            "deploymentTarget": "15.1"
+          }
+        }
+      ]
     ],
-    "experiments": {
-      "typedRoutes": true
+    "scheme": "rnauthapp",
+    "slug": "rn-auth-app",
+    "userInterfaceStyle": "automatic",
+    "version": "1.0.0",
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/images/favicon.png",
+      "output": "static"
     }
   }
 }
