@@ -7,7 +7,7 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 const FAB = () => {
   return (
     <Link href="/(app)/(authenticated)/newmsg" asChild>
-      <TouchableOpacity style={styles.fab} onPress={() => {}}>
+      <TouchableOpacity style={styles.fab}>
         <Ionicons name="add" size={24} color="#fff" />
       </TouchableOpacity>
     </Link>
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     borderRadius: 56,
     width: 56,
     height: 56,
-    boxShadow: "0 2px 3.84px rgba(0, 0, 0, 0.25)",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

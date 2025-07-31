@@ -22,7 +22,7 @@ const NewMsg = () => {
     mutationFn: async (message: string) => {
       return createMessage({ content: message });
     },
-    onSuccess: ({ data }) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["messages"] });
       router.back();
     },
