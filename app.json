@@ -11,6 +11,12 @@
     "experiments": {
       "typedRoutes": true
     },
+    "extra": {
+      "eas": {
+        "projectId": "211e102e-b75e-4bae-aec1-3a662d46acca"
+      },
+      "router": {}
+    },
     "icon": "./assets/images/icon.png",
     "ios": {
       "bundleIdentifier": "com.allentayloriii.rn-auth-app",
@@ -30,7 +36,20 @@
           "imageWidth": 200
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "minSdkVersion": 21,
+            "targetSdkVersion": 34
+          },
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
+        }
+      ]
     ],
     "scheme": "rnauthapp",
     "slug": "rn-auth-app",
@@ -40,12 +59,6 @@
       "bundler": "metro",
       "favicon": "./assets/images/favicon.png",
       "output": "static"
-    },
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "211e102e-b75e-4bae-aec1-3a662d46acca"
-      }
     }
   }
 }
