@@ -37,13 +37,14 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [token, setToken] = useState<string | undefined>(undefined);
+  const [token, setToken] = useState<string | null>(null);
   const [initialized, setInitialized] = useState(false);
   const [userId, setUserId] = useState<number | null>(null);
 
   const processToken = useCallback((token: string) => {
     try {
       const decodedToken = jwtDecode<DecodedToken>(token);
+      setAuthToken(token);
       setToken(token);
       if (__DEV__) {
         console.log("Decoded Token:", decodedToken);
@@ -80,7 +81,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const handleLogout = async () => {
     await SecureStore.deleteItemAsync(JWT_TOKEN);
-    setToken(undefined);
+    setAuthToken(null);
+    setToken(null);
     setUserId(null);
   };
 
@@ -100,7 +102,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         console.log("Loaded token:", storedToken);
       }
       if (storedToken) {
-        setAuthToken(storedToken);
         processToken(storedToken);
       }
       setInitialized(true);

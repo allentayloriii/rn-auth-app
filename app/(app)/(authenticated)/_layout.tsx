@@ -13,7 +13,7 @@ const Layout = () => {
     >
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
-        name="new-msg"
+        name="newmsg"
         options={{
           title: "New Message",
           presentation: "formSheet",

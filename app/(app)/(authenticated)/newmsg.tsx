@@ -1,7 +1,6 @@
 import { createMessage } from "@/utils/api";
 import { COLORS } from "@/utils/colors";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import * as Burnt from "burnt";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -25,16 +24,10 @@ const NewMsg = () => {
     },
     onSuccess: ({ data }) => {
       queryClient.invalidateQueries({ queryKey: ["messages"] });
-      Burnt.toast({ title: "Message sent successfully!", duration: 3 });
       router.back();
     },
     onError: (error) => {
       console.error("Error creating message:", error);
-      Burnt.toast({
-        title: "Error sending message",
-        message: error.message,
-        duration: 3,
-      });
     },
   });
 
