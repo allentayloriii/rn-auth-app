@@ -22,6 +22,7 @@ const Layout = () => {
         options={{
           tabBarLabel: "Messages",
           title: "Messages",
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="chatbubble" color={color} size={size} />
           ),

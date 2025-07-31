@@ -10,7 +10,11 @@ interface MessageItemProps {
 
 const MessageItem = ({ message }: MessageItemProps) => {
   return (
-    <Link href={`/`} style={styles.container} asChild>
+    <Link
+      href={`/(app)/(authenticated)/(tabs)/messages/${message.id}`}
+      style={styles.container}
+      asChild
+    >
       <TouchableOpacity activeOpacity={0.7}>
         <View style={styles.content}>
           <Text style={styles.contentText}>{message.content}</Text>
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: "#fff",
     borderRadius: 8,
-    marginBottom: 10,
+    marginBottom: 16,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
