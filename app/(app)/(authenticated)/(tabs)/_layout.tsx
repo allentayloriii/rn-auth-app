@@ -1,5 +1,5 @@
 import { COLORS } from "@/utils/colors";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 
@@ -23,7 +23,7 @@ const Layout = () => {
           tabBarLabel: "Messages",
           title: "Messages",
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="message" color={color} size={size} />
+            <Ionicons name="chatbubble" color={color} size={size} />
           ),
         }}
       />
@@ -33,7 +33,7 @@ const Layout = () => {
           tabBarLabel: "Profile",
           title: "Profile",
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="person" color={color} size={size} />
+            <Ionicons name="person" color={color} size={size} />
           ),
         }}
       />
