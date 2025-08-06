@@ -1,5 +1,6 @@
 import { createMessage } from "@/utils/api";
 import { COLORS } from "@/utils/colors";
+import { Ionicons } from "@expo/vector-icons";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -7,7 +8,6 @@ import {
   ActivityIndicator,
   KeyboardAvoidingView,
   StyleSheet,
-  Text,
   TextInput,
   TouchableOpacity,
   View,
@@ -71,7 +71,7 @@ const NewMsg = () => {
           {isPending ? (
             <ActivityIndicator size="small" color="#fff" />
           ) : (
-            <Text style={styles.sendButtonText}>Send</Text>
+            <Ionicons name="send" size={24} color="#fff" />
           )}
         </TouchableOpacity>
       </View>
@@ -98,14 +98,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderColor: "#ccc",
     borderWidth: 1,
-  },
-  sendButtonText: {
-    color: "#fff",
-    textAlign: "center",
-    fontSize: 16,
-    fontWeight: "bold",
-    letterSpacing: 1.5,
-    textAlignVertical: "center",
   },
   sendButton: {
     padding: 12,
