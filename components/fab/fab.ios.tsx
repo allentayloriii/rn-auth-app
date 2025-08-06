@@ -1,0 +1,40 @@
+import { Ionicons } from "@expo/vector-icons";
+import { Link } from "expo-router";
+import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+
+const FAB = () => {
+  return (
+    <Link href="/(app)/(authenticated)/newmsg" asChild>
+      <TouchableOpacity style={styles.fab}>
+        <Ionicons name="add" size={24} color="#fff" />
+      </TouchableOpacity>
+    </Link>
+  );
+};
+
+export default FAB;
+
+const styles = StyleSheet.create({
+  fab: {
+    position: "absolute",
+    bottom: 20,
+    right: 20,
+    backgroundColor: "hotpink",
+    padding: 16,
+    borderRadius: 56,
+    width: 56,
+    height: 56,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
