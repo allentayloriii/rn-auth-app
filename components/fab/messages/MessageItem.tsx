@@ -10,6 +10,19 @@ import {
   View,
 } from "react-native";
 
+const theme = {
+  light: {
+    background: "#fff",
+    text: "#333",
+    secondaryText: "#666",
+  },
+  dark: {
+    background: "#333",
+    text: "#fff",
+    secondaryText: "#fff",
+  },
+};
+
 interface MessageItemProps {
   message: Message;
 }
@@ -21,7 +34,12 @@ const MessageItem = ({ message }: MessageItemProps) => {
       href={`/(app)/(authenticated)/(tabs)/messages/${message.id}`}
       style={[
         styles.container,
-        { backgroundColor: colorScheme === "dark" ? "#333" : "#fff" },
+        {
+          backgroundColor:
+            colorScheme === "dark"
+              ? theme.dark.background
+              : theme.light.background,
+        },
       ]}
       asChild
     >
@@ -31,7 +49,12 @@ const MessageItem = ({ message }: MessageItemProps) => {
           <Text
             style={[
               styles.date,
-              { color: colorScheme === "dark" ? "#fff" : "#666" },
+              {
+                color:
+                  colorScheme === "dark"
+                    ? theme.dark.secondaryText
+                    : theme.light.secondaryText,
+              },
             ]}
           >
             {formatDistanceToNow(new Date(message.createdAt), {
@@ -49,7 +72,7 @@ export default MessageItem;
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: "#fff",
+    backgroundColor: theme.light.background,
     borderRadius: 8,
     marginBottom: 16,
     shadowColor: "#000",
@@ -66,12 +89,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   date: {
-    color: "#666",
+    color: theme.light.secondaryText,
     fontSize: 12,
   },
   contentText: {
     fontSize: 16,
-    color: "#333",
+    color: theme.light.text,
     flex: 1,
     marginRight: 8,
     flexWrap: "wrap",
