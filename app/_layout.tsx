@@ -33,6 +33,11 @@ const RootLayout = () => {
     }
   }, [fontsLoaded]);
 
+  if (!fontsLoaded) {
+    // Optionally, you can return a custom loading component here
+    return null;
+  }
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
