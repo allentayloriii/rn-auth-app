@@ -245,6 +245,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     padding: 8,
+    fontFamily: "Inter_400Regular",
   },
   controls: {
     flexDirection: "row",
