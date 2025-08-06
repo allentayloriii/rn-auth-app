@@ -4,10 +4,16 @@ import {
   Inter_900Black,
   useFonts,
 } from "@expo-google-fonts/inter";
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from "@react-navigation/native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
+import { useColorScheme } from "react-native";
 import Toast from "react-native-toast-message";
 
 SplashScreen.preventAutoHideAsync();
@@ -27,6 +33,8 @@ const RootLayout = () => {
     Inter_400Regular,
   });
 
+  const colorScheme = useColorScheme();
+
   useEffect(() => {
     if (fontsLoaded) {
       SplashScreen.hideAsync();
@@ -40,11 +48,13 @@ const RootLayout = () => {
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <Slot />
-        </AuthProvider>
-      </QueryClientProvider>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <Slot />
+          </AuthProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
       <Toast />
     </>
   );

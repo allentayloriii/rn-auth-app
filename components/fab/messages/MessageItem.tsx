@@ -2,23 +2,38 @@ import { Message } from "@/utils/api";
 import { formatDistanceToNow } from "date-fns";
 import { Link } from "expo-router";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+} from "react-native";
 
 interface MessageItemProps {
   message: Message;
 }
 
 const MessageItem = ({ message }: MessageItemProps) => {
+  const colorScheme = useColorScheme();
   return (
     <Link
       href={`/(app)/(authenticated)/(tabs)/messages/${message.id}`}
-      style={styles.container}
+      style={[
+        styles.container,
+        { backgroundColor: colorScheme === "dark" ? "#333" : "#fff" },
+      ]}
       asChild
     >
       <TouchableOpacity activeOpacity={0.7}>
         <View style={styles.content}>
           <Text style={styles.contentText}>{message.content}</Text>
-          <Text style={styles.date}>
+          <Text
+            style={[
+              styles.date,
+              { color: colorScheme === "dark" ? "#fff" : "#666" },
+            ]}
+          >
             {formatDistanceToNow(new Date(message.createdAt), {
               addSuffix: true,
             })}
