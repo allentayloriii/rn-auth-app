@@ -62,7 +62,6 @@ const MessageDetail = () => {
 
   useEffect(() => {
     if (message?.data?.content) {
-      console.log("Fetched message:", message.data.content);
       setEditedText(message.data?.content ?? "");
     }
   }, [message?.data?.content]);
@@ -99,7 +98,7 @@ const MessageDetail = () => {
   const deleteMutation = useMutation({
     mutationFn: () => deleteMessage(Number(id)),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["message"] });
+      queryClient.invalidateQueries({ queryKey: ["messages"] });
       Toast.show({
         type: "success",
         text1: "Message deleted successfully!",
