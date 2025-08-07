@@ -1,9 +1,8 @@
 import { COLORS } from "@/utils/colors";
-import { Stack, useRouter } from "expo-router";
+import { Stack } from "expo-router";
 import React from "react";
 
 const Layout = () => {
-  const router = useRouter();
   return (
     <Stack
       screenOptions={{
