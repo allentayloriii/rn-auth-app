@@ -45,7 +45,17 @@ const MessageItem = ({ message }: MessageItemProps) => {
     >
       <TouchableOpacity activeOpacity={0.7}>
         <View style={styles.content}>
-          <Text style={styles.contentText}>{message.content}</Text>
+          <Text
+            style={[
+              styles.contentText,
+              {
+                color:
+                  colorScheme === "dark" ? theme.dark.text : theme.light.text,
+              },
+            ]}
+          >
+            {message.content}
+          </Text>
           <Text
             style={[
               styles.date,

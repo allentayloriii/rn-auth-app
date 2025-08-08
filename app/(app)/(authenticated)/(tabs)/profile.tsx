@@ -5,7 +5,7 @@ import { Image } from "expo-image";
 import React from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import * as ImagePicker from "expo-image-picker";
+// import * as ImagePicker from "expo-image-picker";
 
 const Profile = () => {
   const { onLogout, token } = useAuth();
@@ -24,18 +24,18 @@ const Profile = () => {
   });
 
   const handleSelectImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: "images",
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 0.5,
-    });
-    if (!result.canceled && result.assets && result.assets.length > 0) {
-      uploadImageMutation.mutate({
-        uri: result.assets[0].uri,
-        token: token || "",
-      });
-    }
+    // const result = await ImagePicker.launchImageLibraryAsync({
+    //   mediaTypes: "images",
+    //   allowsEditing: true,
+    //   aspect: [1, 1],
+    //   quality: 0.5,
+    // });
+    // if (!result.canceled && result.assets && result.assets.length > 0) {
+    //   uploadImageMutation.mutate({
+    //     uri: result.assets[0].uri,
+    //     token: token || "",
+    //   });
+    // }
   };
 
   return (
